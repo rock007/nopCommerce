@@ -1,0 +1,11 @@
+﻿@{
+    Layout = "";
+    Html.AddCssFileParts("~/Plugins/ExternalAuth.WeChat/Content/wechatstyles.css");    
+}
+@*<div class="wechat-login-block">
+    <div class="buttons">
+        <a asp-controller="wechatauthentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="wechat fl"><em></em><span>微信登录</span></a>
+    </div>
+</div>*@
+
+<a asp-controller="wechatauthentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="wechat fl"><em></em><span>微信登录</span></a>

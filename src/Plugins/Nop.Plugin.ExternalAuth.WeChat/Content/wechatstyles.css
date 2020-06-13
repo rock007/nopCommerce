@@ -1,0 +1,74 @@
+﻿.wechat-btn {
+    display: inline-block;
+    width: 150px;
+    height: 23px;
+    background-image: url('images/wechat.png');
+    background-repeat: no-repeat;
+}
+.wechat-btn:hover {
+    background-position: 0px -24px;
+}
+.wechat-btn:active {
+    background-position: 0px -48px;
+}
+
+/*  */
+.fl {
+    float: left;
+}
+
+.select-login-type {
+    margin-top: 43px;
+}
+
+.select-login-type a {
+    display: inline-block;
+    border-radius: 50%;
+    width: 165px;
+    height: 165px;
+    border: 1px solid #dfdfdf;
+    font-size: 18px;
+    text-align: center;
+}
+
+    .select-login-type a em {
+        margin: 38px auto 13px;
+        display: block;
+        background-image: url('images/login-type.png');
+        background-repeat: no-repeat;
+    }
+
+.select-login-type .qq {
+    color: #2a9ce3;
+    margin-left: 97px;
+    margin-right: 40px;
+}
+
+.select-login-type .qq em {
+    width: 52px;
+    height: 57px;
+    background-position: -11px -6px;
+}
+
+.select-login-type .qq:hover {
+    background: #2a9ce3;
+    color: #fff;
+    border: 1px solid #2a9ce3;
+}
+
+.select-login-type .wechat {
+color: #40af37;
+margin-left: 40px;
+}
+
+.select-login-type .wechat:hover {
+    background: #40af37;
+    color: #fff;
+    border: 1px solid #40af37;
+}
+
+.select-login-type .wechat em {
+    width: 57px;
+    height: 57px;
+    background-position: -124px -6px;
+}

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="简体中文">
+<LocaleResource Name="Plugins.Payments.WeChatPay.ApplicationId"><Value>Application Id</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.ApplicationId.Hint"><Value>Application Id</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.ApplicationSecret"><Value>AppSecret应用身份签名密钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.ApplicationSecret.Hint"><Value>AppSecret应用身份签名密钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.MerchantId"><Value>Merchant Id</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.MerchantId.Hint"><Value>Merchant Id</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.PaySignKey"><Value>PaySignKey商户支付参数签名密钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.PaySignKey.Hint"><Value>PaySignKey商户支付参数签名密钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.AdditionalFee"><Value>附加费</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.AdditionalFee.Hint"><Value>附加费</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.AdditionalFeePercentage"><Value>附加费比例</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.AdditionalFeePercentage.Hint"><Value>附加费比例</Value></LocaleResource>
+
+<LocaleResource Name="Plugins.Payments.WeChatPay.Instructions"><Value>微信扫码支付</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.ScanQRCode"><Value>确认订单后，会出现支付二维码，请使用我微信扫一扫功能，进行支付。</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.RedirectionTip"><Value>确认订单后，将打开微信在线支付页面，进行支付。</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.WeChatPay.PaymentMethodDescription"><Value>微信支付，支持付款码、Native、H5支付</Value></LocaleResource>
+
+</Language>

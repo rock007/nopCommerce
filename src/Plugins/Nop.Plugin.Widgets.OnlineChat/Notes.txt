@@ -1,0 +1,24 @@
+﻿使用中如有问题，请联系QQ：954219492，或者加入QQ群：169366609，邮件请发到：954219492@qq.com
+
+使用方法：
+
+@await Component.InvokeAsync("WidgetsNotification")
+@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomePageBottom })
+@await Component.InvokeAsync("AdminWidget", new { widgetZone = AdminWidgetZones.HeaderBefore })
+
+1、找到此文件 \Presentation\Nop.Web\Areas\Admin\Views\Shared\_AdminLayout.cshtml 中的如下代码，一般在页面底部：
+@Html.NopCssFiles(this.Url, ResourceLocation.Footer)
+@Html.NopScripts(this.Url, ResourceLocation.Footer)
+2、添加：
+@await Component.InvokeAsync("WidgetsNotification")  @* 不管插件是否安装，都会起作用 *@
+或者
+@await Component.InvokeAsync("AdminWidget", new { widgetZone = "page-bottom" })  @* 仅仅安装此插件才起作用 *@
+3、在</body>上面添加：
+        @Html.NopInlineScripts(this.Url, ResourceLocation.Footer)
+    </body>
+
+注意： 如果 @await Component.InvokeAsync("AdminWidget", ......放到 Layout页面，则其放置的位置非常关键，这要配合
+@Html.NopCssFiles 和 @Html.NopScripts来达到目的，因为 Razor页面渲染时，
+要先处理 主页面，再处理 layout页面，也就是layout页面仅仅是主页面的一个附属品。
+主页面上的 Html.AddScriptParts 、AddCssFileParts会先执行，再执行 layout页面的， 当在layout页面遇到Html.NopCssFiles 和 @Html.NopScripts时，
+会输出脚本与样式，此时 _scriptParts 和 _cssParts的值会输出，因此要保证这之前，Widget页面和 partial页面上的AddScriptParts 、AddCssFileParts已经执行。

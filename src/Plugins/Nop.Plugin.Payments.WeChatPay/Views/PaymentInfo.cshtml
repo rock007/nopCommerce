@@ -1,0 +1,25 @@
+﻿@model Nop.Plugin.Payments.WeChatPay.Models.PaymentInfoModel
+@inject IUserAgentHelper userAgentHelper
+@inject IHttpContextAccessor httpContextAccessor
+@using Microsoft.Extensions.DependencyInjection
+@using Microsoft.AspNetCore.Http
+@using Nop.Services.Helpers
+@{
+    Layout = "";
+    var isMobileDevice = httpContextAccessor.HttpContext.RequestServices.GetService<IUserAgentHelper>().IsMobileDevice();
+}
+<table width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            @if (isMobileDevice)
+            {
+                <p><b>@T("Plugins.Payments.WeChatPay.RedirectionTip")</b></p>
+            }
+            else
+            {
+                <p><b>@T("Plugins.Payments.WeChatPay.ScanQRCode")</b></p>
+            }
+
+        </td>
+    </tr>
+</table>

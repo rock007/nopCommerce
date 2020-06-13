@@ -1,0 +1,164 @@
+﻿@model Nop.Plugin.Widgets.Notification.Models.PublicInfoModel
+@{
+    Layout = "";
+
+    //Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Widgets.Notification/Scripts/notyf.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Widgets.Notification/Scripts/notifications.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/Plugins/Widgets.Notification/Scripts/signalr.min.js");
+    Html.AddCssFileParts(ResourceLocation.Footer, "~/Plugins/Widgets.Notification/Content/lobibox.min.css");
+
+    //Html.AddCssFileParts("~/Plugins/Widgets.Notification/Content/nivoslider/nivo-slider.css");
+    //Html.AddCssFileParts("~/Plugins/Widgets.Notification/Content/nivoslider/themes/custom/custom.css");
+}
+
+<script asp-location="Footer">
+    //var notyf = new Notyf({ delay: 60000 });
+    function connect(conn) {
+        conn.start()
+            .then(() => {
+                //console.log('opened!')
+            })
+            .catch(e => {
+                console.error(e.toString());
+                sleep(5000);
+                console.log("Reconnecting Socket");
+                connect(conn);
+            })
+    }
+    function sleep(milliseconds) {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+            if ((new Date().getTime() - start) > milliseconds) {
+                break;
+            }
+        }
+    }
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/notificationHub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+    // 监听后台 约定Key=OrderPaid的 SendAsync方法调用
+    // 后台执行类似这样的代码时：await Clients.All.SendAsync("OrderPaid", user, message);
+    // 则激活此方法
+    connection.on("ReceiveOrderPlacedMessage", function (user, message) {
+        console.log(message);
+        console.log(user);
+        //notyf.confirm("下订单:"
+        //    + "role:" + message.role
+        //    + "<br>name:" + message.order
+        //    + "<br>date:" + message.date
+        //    + "<br>user:" + message.user);
+
+        Lobibox.notify('info', { 
+            msg: '下订单:'
+                + 'role:' + message.role
+                + '<br>name:' + message.order
+                + '<br>date:' + message.date
+                + '<br>user:' + message.user,
+            onClickUrl: '/admin/order/edit/' + message.orderid,
+            size: 'mini',
+            //rounded: true,
+            //delayIndicator: false,
+	        incoSource: 'fontAwesome',
+            title: 'success',
+            delay: 50000,
+            soundPath: '/Plugins/Widgets.Notification/Content/sounds/',
+	        sound: true
+        });
+    });
+    connection.on('ReceiveOrderPaidMessage', function (user, message) { //OrderPaid
+        console.log(message);
+        console.log(user);
+        Lobibox.notify('success', {
+            msg: '订单已付款:'
+                + 'role:' + message.role
+                + '<br>name:' + message.order
+                + '<br>date:' + message.date
+                + '<br>user:' + message.user,
+            onClickUrl: '/admin/order/edit/' + message.orderid,
+            size: 'mini',
+            //rounded: true,
+            //delayIndicator: false,
+            incoSource: 'fontAwesome',
+            title: 'success',
+            delay: 50000,
+            soundPath: '/Plugins/Widgets.Notification/Content/sounds/',
+	        sound: true
+        });
+    });
+    connection.on('ReceiveOrderCancelledMessage', function (user, message) { //OrderPaid
+        console.log(message);
+        console.log(user);
+        Lobibox.notify('warning', { //'warning', 'info', 'success', 'error'
+            msg: '订单已撤销:'
+                + 'role:' + message.role
+                + '<br>name:' + message.order
+                + '<br>date:' + message.date
+                + '<br>user:' + message.user,
+            onClickUrl: '/admin/order/edit/' + message.orderid,
+            size: 'mini',
+            //rounded: true,
+            //delayIndicator: false,
+            incoSource: 'fontAwesome',
+            title: 'success',
+            delay: 50000,
+            soundPath: '/Plugins/Widgets.Notification/Content/sounds/',
+            sound: true
+        });
+    });
+    connection.on('ReceiveOrderRefundedMessage', function (user, message) { //OrderPaid
+        console.log(message);
+        console.log(user);
+        Lobibox.notify('error', {
+            msg: '订单已退款:'
+                + 'role:' + message.role
+                + '<br>name:' + message.order
+                + '<br>date:' + message.date
+                + '<br>user:' + message.user,
+            onClickUrl: '/admin/order/edit/' + message.orderid,
+            size: 'mini',
+            //rounded: true,
+            //delayIndicator: false,
+            incoSource: 'fontAwesome',
+            title: 'success',
+            delay: 50000,
+            soundPath: '/Plugins/Widgets.Notification/Content/sounds/',
+            sound: true
+        });
+    });
+    connection.on('ReceiveCustomerRegisteredMessage', function (user, message) { //OrderPaid
+        console.log(message);
+        console.log(user);
+        Lobibox.notify('info', {
+            msg: '新会员注册成功:'
+                + 'role:' + message.role
+                + '<br>name:' + message.customer
+                + '<br>date:' + message.date
+                + '<br>user:' + message.customer,
+            onClickUrl: '/admin/customer/edit/' + message.customer,
+            size: 'mini',
+            //rounded: true,
+            //delayIndicator: false,
+            incoSource: 'fontAwesome',
+            title: 'success',
+            delay: 50000,
+            soundPath: '/Plugins/Widgets.Notification/Content/sounds/',
+            sound: true
+        });
+    });
+
+    connect(connection);
+    // 用户点击浏览器页面上的按钮，激活一个事件，主动调用服务器端Hub的一个方法：
+    // 使用：connection.invoke
+	/*
+    document.getElementById("sendButton").addEventListener("click", function (event) {
+        var user = document.getElementById("userInput").value;
+        var message = document.getElementById("messageInput").value;
+        // 调用后台 Hub的方法
+        connection.invoke("SendMessage", user, message).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
+    });
+	*/
+</script>
