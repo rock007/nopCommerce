@@ -1,0 +1,11 @@
+﻿{
+  "Group": "ExternalAuth methods",
+  "FriendlyName": "微信登录",
+  "SystemName": "ExternalAuth.WeChat",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.30" ],
+  "Author": "  ",
+  "DisplayOrder": 5,
+  "FileName": "Nop.Plugin.ExternalAuth.WeChat.dll",
+  "Description": "此插件使程序支持WeChat登录 "
+}

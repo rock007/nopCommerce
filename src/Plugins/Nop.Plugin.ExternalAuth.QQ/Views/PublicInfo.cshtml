@@ -1,0 +1,5 @@
+﻿@{
+    Layout = "";
+    Html.AddCssFileParts("~/Plugins/ExternalAuth.QQ/Content/qqstyles.css");
+}
+<a asp-controller="qqauthentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="qq fl"><em></em><span>QQ登录</span></a>

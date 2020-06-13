@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language Name="English">
+
+<LocaleResource Name="Plugins.Payments.AliPay.ApplicationId"><Value>Application Id</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.ApplicationId.Hint"><Value>Application Id</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.EncyptKey"><Value>签名密钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.EncyptKey.Hint"><Value>签名密钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.RsaPublicKey"><Value>支付宝公钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.RsaPublicKey.Hint"><Value>支付宝公钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.RsaPrivateKey"><Value>支付宝私钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.RsaPrivateKey.Hint"><Value>支付宝私钥</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.PaySignKey"><Value>EncyptKey</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.PaySignKey.Hint"><Value>EncyptKey</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.AdditionalFee"><Value>附加费</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.AdditionalFee.Hint"><Value>附加费</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.AdditionalFeePercentage"><Value>附加费比例</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.AdditionalFeePercentage.Hint"><Value>附加费比例</Value></LocaleResource>
+
+<LocaleResource Name="Plugins.Payments.AliPay.Instructions"><Value>支付宝扫码支付，有问题联系</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.ScanQRCode"><Value>确认订单后，会出现支付二维码，请使用支付宝扫一扫功能，进行支付。</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.RedirectionTip"><Value>确认订单后，将打开支付宝在线支付页面，进行支付。</Value></LocaleResource>
+<LocaleResource Name="Plugins.Payments.AliPay.PaymentMethodDescription"><Value>支付宝支付，支持当面付、手机网站支付、电脑网站支付</Value></LocaleResource>
+
+
+</Language>

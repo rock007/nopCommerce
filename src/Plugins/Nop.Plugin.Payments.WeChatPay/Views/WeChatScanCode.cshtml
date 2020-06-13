@@ -1,0 +1,27 @@
+﻿@{
+    //Layout = "";
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+}
+@model Nop.Plugin.Payments.WeChatPay.Models.WeChatScanCodeModel
+@using Nop.Web.Framework;
+
+<div style="margin:0 auto; display:table;">
+    <p style="margin-top:30px; margin-bottom:20px; font-weight:500; font-size:18px;">请使用微信扫描下面的二维码，进行支付</p>
+    <div>
+        <img src="/Plugins/PaymentWeChatPay/MakeQRCode?ordercode=@Model.OrderCode" alt="微信支付二维码" title="微信支付二维码" style="width:360px;height:360px;" />
+    </div>
+    <div id="redirectHint" style="margin-top:30px; font-weight:500; font-size:18px; display:none;">
+        <p>您可以点击<a href="/order/history" style="padding-left:10px;padding-right:10px;">这里</a> 查看支付结果。</p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    setTimeout(function () {
+        $('#redirectHint').show();
+
+        setTimeout(function () {
+            location.href = '/order/history';
+        }, 60000);
+
+    }, 15000);
+</script>

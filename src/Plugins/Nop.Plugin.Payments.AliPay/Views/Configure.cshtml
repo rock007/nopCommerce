@@ -1,0 +1,158 @@
+﻿@model Nop.Plugin.Payments.AliPay.Models.ConfigurationModel
+@inject Nop.Core.IWebHelper webHelper
+@{
+    Layout = "_ConfigurePlugin";
+}
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+
+<form asp-controller="PaymentAliPay" asp-action="Configure" method="post">
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                @T("Plugins.Payments.AliPay.Instructions")
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ApplicationId_OverrideForStore" asp-input="ApplicationId" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ApplicationId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ApplicationId" />
+                        <span asp-validation-for="ApplicationId"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="SignType_OverrideForStore" asp-input="SignType" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="SignType" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="SignType" />
+                        <span asp-validation-for="SignType"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="RsaPublicKey_OverrideForStore" asp-input="RsaPublicKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="RsaPublicKey" />
+                    </div>
+                    <div class="col-md-9">
+                        @*<nop-editor asp-for="RsaPublicKey" />*@
+                        <nop-textarea asp-for="RsaPublicKey" />
+                        <span asp-validation-for="RsaPublicKey"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="RsaPrivateKey_OverrideForStore" asp-input="RsaPrivateKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="RsaPrivateKey" />
+                    </div>
+                    <div class="col-md-9">
+                        @*<nop-editor asp-for="RsaPrivateKey" />*@
+                        <nop-textarea asp-for="RsaPrivateKey" />
+                        <span asp-validation-for="RsaPrivateKey"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ServerUrl_OverrideForStore" asp-input="ServerUrl" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ServerUrl" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ServerUrl" />
+                        <span asp-validation-for="ServerUrl"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Version_OverrideForStore" asp-input="Version" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Version" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Version" />
+                        <span asp-validation-for="Version"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Format_OverrideForStore" asp-input="Format" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Format" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Format" />
+                        <span asp-validation-for="Format"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Charset_OverrideForStore" asp-input="Charset" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Charset" />
+                    </div>
+                    <div class="col-md-9">
+                        @*<nop-editor asp-for="Charset" />
+                        <span asp-validation-for="Charset"></span>*@
+                        @Model.Charset
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="EncyptType_OverrideForStore" asp-input="EncyptType" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="EncyptType" />
+                    </div>
+                    <div class="col-md-9">
+                        @*<nop-editor asp-for="EncyptType" />
+                        <span asp-validation-for="EncyptType"></span>*@
+                       @Model.EncyptType
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="EncyptKey_OverrideForStore" asp-input="EncyptKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="EncyptKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="EncyptKey" />
+                        <span asp-validation-for="EncyptKey"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AdditionalFee_OverrideForStore" asp-input="AdditionalFee" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AdditionalFee" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AdditionalFee" />
+                        <span asp-validation-for="AdditionalFee"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AdditionalFeePercentage_OverrideForStore" asp-input="AdditionalFeePercentage" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AdditionalFeePercentage" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AdditionalFeePercentage" />
+                        <span asp-validation-for="AdditionalFeePercentage"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <input type="submit" name="save" class="btn bg-primary" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

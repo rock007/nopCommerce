@@ -1,0 +1,12 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "支付宝",
+  "SystemName": "Payments.AliPay",
+  "Version": "1.00",
+  "SupportedVersions": [ "4.30" ],
+  "Author": "",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Payments.AliPay.dll",
+  "Description": "支付宝支付，支持当面付、手机网站支付、电脑网站支付",
+  "Notes": "沙箱测试： https://docs.open.alipay.com/200/105311/"
+}

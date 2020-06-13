@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Nop.Core.Domain.Payments;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Tax;
@@ -333,5 +334,6 @@ namespace Nop.Core.Domain.Orders
         }
 
         #endregion
+
     }
 }
