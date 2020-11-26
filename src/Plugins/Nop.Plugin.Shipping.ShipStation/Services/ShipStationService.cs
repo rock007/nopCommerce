@@ -101,6 +101,7 @@ namespace Nop.Plugin.Shipping.ShipStation.Services
 
         protected virtual string SendGetRequest(string apiUrl)
         {
+            /***
             var request = WebRequest.Create(apiUrl);
 
             request.Credentials = new NetworkCredential(_shipStationSettings.ApiKey, _shipStationSettings.ApiSecret);
@@ -114,6 +115,9 @@ namespace Nop.Plugin.Shipping.ShipStation.Services
                     return sr.ReadToEnd();
                 }
             }
+            ****/
+
+            return "ShipStationService.SendGetRequest result";
         }
 
         private int ConvertFromPrimaryMeasureDimension(decimal quantity, MeasureDimension usedMeasureDimension)
@@ -143,6 +147,7 @@ namespace Nop.Plugin.Shipping.ShipStation.Services
 
         protected virtual IList<ShipStationServiceRate> GetRates(GetShippingOptionRequest getShippingOptionRequest, string carrierCode)
         {
+            /**!!
             var usedWeight = _measureService.GetMeasureWeightBySystemKeyword(Weight.Units);
             if (usedWeight == null)
                 throw new NopException("ShipStatio shipping service. Could not load \"{0}\" measure weight", Weight.Units);
@@ -266,6 +271,8 @@ namespace Nop.Plugin.Shipping.ShipStation.Services
 
                 return TryGetError(data) ? new List<ShipStationServiceRate>() : JsonConvert.DeserializeObject<List<ShipStationServiceRate>>(data);
             }
+            ****/
+            return new List<ShipStationServiceRate>();
         }
         
         protected virtual IList<Carrier> GetCarriers()

@@ -3,7 +3,7 @@
   "FriendlyName": "支付宝",
   "SystemName": "Payments.AliPay",
   "Version": "1.00",
-  "SupportedVersions": [ "4.30" ],
+  "SupportedVersions": [ "4.40" ],
   "Author": "",
   "DisplayOrder": 1,
   "FileName": "Nop.Plugin.Payments.AliPay.dll",

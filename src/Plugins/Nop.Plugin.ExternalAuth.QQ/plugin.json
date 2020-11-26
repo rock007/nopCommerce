@@ -3,7 +3,7 @@
   "FriendlyName": "QQ 登录",
   "SystemName": "ExternalAuth.QQ",
   "Version": "1.00",
-  "SupportedVersions": [ "4.30" ],
+  "SupportedVersions": [ "4.40" ],
   "Author": "  ",
   "DisplayOrder": 5,
   "FileName": "Nop.Plugin.ExternalAuth.QQ.dll",

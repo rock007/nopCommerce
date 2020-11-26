@@ -7,6 +7,7 @@ namespace Nop.Plugin.Shipping.ShipStation.Models
 {
     public class ShipStationModel : BaseNopModel
     {
+        
         public int ActiveStoreScopeConfiguration { get; set; }
 
         [NopResourceDisplayName("Plugins.Shipping.ShipStation.Fields.ApiKey")]
@@ -38,6 +39,7 @@ namespace Nop.Plugin.Shipping.ShipStation.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public bool Password_OverrideForStore { get; set; }
+       
 
         public string WebhookURL { get; set; }
     }

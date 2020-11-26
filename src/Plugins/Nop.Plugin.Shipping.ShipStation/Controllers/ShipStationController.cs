@@ -44,9 +44,9 @@ namespace Nop.Plugin.Shipping.ShipStation.Controllers
         public ActionResult Configure()
         {
             //load settings for a chosen store scope
-            var storeScope = _storeContext.ActiveStoreScopeConfiguration;
-            var shipStationSettings = _settingService.LoadSetting<ShipStationSettings>(storeScope);
-
+           // var storeScope = _storeContext.ActiveStoreScopeConfiguration;
+           // var shipStationSettings = _settingService.LoadSetting<ShipStationSettings>(storeScope);
+            /***
             var model = new ShipStationModel
             {
                 ApiKey = shipStationSettings.ApiKey,
@@ -71,6 +71,9 @@ namespace Nop.Plugin.Shipping.ShipStation.Controllers
             model.PassDimensions_OverrideForStore = _settingService.SettingExists(shipStationSettings, x => x.PassDimensions, storeScope);
             model.Password_OverrideForStore = _settingService.SettingExists(shipStationSettings, x => x.Password, storeScope);
             model.UserName_OverrideForStore = _settingService.SettingExists(shipStationSettings, x => x.UserName, storeScope);
+            ***/
+            var model = new ShipStationModel();
+            model.WebhookURL = $"{_webHelper.GetStoreLocation()}Plugins/ShipStation/Webhook";
 
             return View("~/Plugins/Shipping.ShipStation/Views/Configure.cshtml", model);
         }
@@ -86,7 +89,7 @@ namespace Nop.Plugin.Shipping.ShipStation.Controllers
             //load settings for a chosen store scope
             var storeScope = _storeContext.ActiveStoreScopeConfiguration;
             var shipStationSettings = _settingService.LoadSetting<ShipStationSettings>(storeScope);
-
+            
             //save settings
             shipStationSettings.ApiKey = model.ApiKey;
             shipStationSettings.ApiSecret = model.ApiSecret;
@@ -98,7 +101,7 @@ namespace Nop.Plugin.Shipping.ShipStation.Controllers
 
             /* We do not clear cache after each setting update.
              * This behavior can increase performance because cached settings will not be cleared 
-             * and loaded from database after each update */
+             * and loaded from database after each update ***/
             _settingService.SaveSettingOverridablePerStore(shipStationSettings, x => x.ApiKey, model.ApiKey_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(shipStationSettings, x => x.ApiSecret, model.ApiSecret_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(shipStationSettings, x => x.PackingPackageVolume, model.PackingPackageVolume_OverrideForStore, storeScope, false);
@@ -106,7 +109,7 @@ namespace Nop.Plugin.Shipping.ShipStation.Controllers
             _settingService.SaveSettingOverridablePerStore(shipStationSettings, x => x.PassDimensions, model.PassDimensions_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(shipStationSettings, x => x.Password, model.Password_OverrideForStore, storeScope, false);
             _settingService.SaveSettingOverridablePerStore(shipStationSettings, x => x.UserName, model.UserName_OverrideForStore, storeScope, false);
-
+            
             //now clear settings cache
             _settingService.ClearCache();
 
@@ -117,13 +120,13 @@ namespace Nop.Plugin.Shipping.ShipStation.Controllers
 
         public IActionResult Webhook()
         {
-            var userName = _webHelper.QueryString<string>("SS-UserName");
-            var password = _webHelper.QueryString<string>("SS-Password");
+           // var userName = _webHelper.QueryString<string>("SS-UserName");
+           // var password = _webHelper.QueryString<string>("SS-Password");
 
             //load settings for a chosen store scope
-            var storeScope = _storeContext.ActiveStoreScopeConfiguration;
-            var shipStationSettings = _settingService.LoadSetting<ShipStationSettings>(storeScope);
-
+           // var storeScope = _storeContext.ActiveStoreScopeConfiguration;
+           // var shipStationSettings = _settingService.LoadSetting<ShipStationSettings>(storeScope);
+            /***!!
             if (!userName.Equals(shipStationSettings.UserName) || !password.Equals(shipStationSettings.Password))
                 return Content(string.Empty);
 
@@ -157,6 +160,8 @@ namespace Nop.Plugin.Shipping.ShipStation.Controllers
             var endDate = string.IsNullOrEmpty(endDateParam) ? (DateTime?)null : DateTime.ParseExact(endDateParam, _shipStationService.DateFormat, CultureInfo.InvariantCulture);
             
             return Content(_shipStationService.GetXmlOrders(startDate, endDate, pageIndex, 200), "text/xml");
+            ****/
+            return Content("fuck the shipStation hook", "text/xml");
         }
     }
 }

@@ -115,5 +115,30 @@
     </form>
 
     <script type="text/javascript">
-      
+        $(document).ready(function() {
+
+            //$("#PackingType").change(togglePackingType);
+
+            //$(?Html.IdFor(model => model.PassDimensions)).change(togglePassDimensions);
+
+            //togglePassDimensions();
+        });
+
+        function togglePackingType() {
+            var selectedPackingTypeId = $("#PackingType").val();
+            if (selectedPackingTypeId == ?(((int) PackingType.PackByDimensions).ToString())) {
+                $('#pnlPackingPackageVolume').hide();
+            } else if (selectedPackingTypeId == ?(((int) PackingType.PackByVolume).ToString())) {
+                $('#pnlPackingPackageVolume').show();
+            }
+        }
+
+        function togglePassDimensions() {
+            if ($(?Html.IdFor(model => model.PassDimensions)).is(':checked')) {
+                $('#pnlPackingType').show();
+            } else {
+                $('#pnlPackingType').hide();
+            }
+            togglePackingType();
+        }
     </script>

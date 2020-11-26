@@ -101,7 +101,7 @@ namespace Nop.Plugin.Shipping.ShipStation
             if (getShippingOptionRequest == null)
                 throw new ArgumentNullException(nameof(getShippingOptionRequest));
 
-            return null;
+            return (decimal?)10.1;
         }
 
         /// <summary>
@@ -118,11 +118,13 @@ namespace Nop.Plugin.Shipping.ShipStation
         public override void Install()
         {
             //settings
+            /**
             var settings = new ShipStationSettings
             {
                 PackingPackageVolume = 5184
             };
             _settingService.SaveSetting(settings);
+           
 
             //locales
             _localizationService.AddPluginLocaleResource(new Dictionary<string, string>
@@ -144,7 +146,7 @@ namespace Nop.Plugin.Shipping.ShipStation
                 ["Plugins.Shipping.ShipStation.Fields.UserName"] = "User name",
                 ["Plugins.Shipping.ShipStation.Fields.UserName.Hint"] = "Specify ShipStation user name"
             });
-
+            ***/
             base.Install();
         }
 

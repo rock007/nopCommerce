@@ -4,6 +4,7 @@ namespace Nop.Plugin.Shipping.ShipStation
 {
     public class ShipStationSettings : ISettings
     {
+
         /// <summary>
         /// API key
         /// </summary>
@@ -38,5 +39,6 @@ namespace Nop.Plugin.Shipping.ShipStation
         /// ShipStation password
         /// </summary>
         public string Password { get; set; }
+
     }
 }
